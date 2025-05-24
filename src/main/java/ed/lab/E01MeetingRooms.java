@@ -8,11 +8,11 @@ public class E01MeetingRooms {
     public int minMeetingRooms(List<MeetingInterval> meetingIntervals) {
         //ordenar
         meetingIntervals.sort((a, b) -> a.startTime() - b.startTime());
-        for (MeetingInterval interval : meetingIntervals) {
-            if (!meetingRooms.isEmpty() && meetingRooms.peek() <= interval.startTime()) {
+        for (MeetingInterval meetingInterval : meetingIntervals) {
+            if (!meetingRooms.isEmpty() && meetingRooms.peek() <= meetingInterval.startTime()) {
                 meetingRooms.poll();
             }
-            meetingRooms.offer(interval.endTime());
+            meetingRooms.offer(meetingInterval.endTime());
         }
         int result = meetingRooms.size();
         return result;
